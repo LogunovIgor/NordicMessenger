@@ -83,5 +83,13 @@ body {
     .go-down {
         display: none;
     }
+
+    #input-messages {
+        height: 80vh;
+    }
+
+    .output-message-block {
+        height: 20vh;
+    }
 }
 
