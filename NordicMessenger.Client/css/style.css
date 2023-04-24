@@ -45,6 +45,10 @@ body {
     flex-flow: column nowrap;
 }
 
+#input-messages::-webkit-scrollbar {
+    width: 0;
+  }
+
 .input-message {
     text-align: justify;
     margin: 5px 0;
@@ -78,14 +82,6 @@ body {
 @media (max-width: 500px) {
     .go-down {
         display: none;
-    }
-
-    #input-messages {
-        height: 80vh;
-    }
-
-    .output-message-block {
-        height: 20vh;
     }
 }
 
