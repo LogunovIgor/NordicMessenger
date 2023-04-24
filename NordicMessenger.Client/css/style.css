@@ -1,25 +1,21 @@
-.privet {
-    margin: 5px 0;
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-    border-radius: 5px 0 5px 0;
-    display: inline-block;
-    box-sizing: border-box;
-    border-radius: 5px 5px 5px 0;
-    
-    
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-
 .wrapper {
-    width: 100%;
     margin: 0px auto;
+    width: 100%;
+    height: 100vh;
+    max-width: 1200px;
 }
 
 .go-down {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    background-image: url('img/godown.jpg');
     background-size: cover;
     background-position: center;
     position: fixed;
@@ -28,30 +24,22 @@
     z-index: 55;
 }
 
-.go-down a {
+.go-down-href {
     display: block;
     height: 100%;
+    width: 100%;
 }
 
-.wrapper {
-   
-    margin: 5px auto;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-.messages {
-    background-image: url('https://i.ytimg.com/vi/cZqaOXyd77Q/maxresdefault_live.jpg');
+.input-messages {
+    background-image: url('../img/background.jpg');
     background-size: cover;
     padding: 20px;
     box-sizing: border-box;
-    height: 90vh;
+    height: 92vh;
     overflow: auto;
 }
-.message {
+
+.input-message {
 
     margin: 5px 0;
     background-color: rgb(255, 255, 255);
@@ -60,5 +48,16 @@ body {
     display: inline-block;
     box-sizing: border-box;
     border-radius: 5px 5px 5px 0;
+}
+
+.output-message-block {
+    width: 100%;
+    height: 8vh;
+}
+
+.output-message-area {
+    width: 100%; 
+    height: 100%;
+    box-sizing: border-box;
 }
 
