@@ -5,6 +5,7 @@ html {
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 .wrapper {
@@ -81,6 +82,11 @@ body {
 @media (max-width: 500px) {
     .go-down {
         display: none;
+    }
+
+    .wrapper {
+        max-height: 100vh;
+        min-height: 50vh;
     }
 }
 
