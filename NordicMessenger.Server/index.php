@@ -1,17 +1,20 @@
 <?php
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+    
     $manager = new MessageManager();
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         echo json_encode($manager->GetAllMessages());
-
+              
         http_response_code(200);
         return;
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $inputMessage = trim($_POST['message']);
+        $inputMessage = $_POST['message'];
 
-        if (!empty($inputMessage)) {
+        if ($inputMessage != null && strlen($inputMessage) != 0) {
             $message = new Message(uniqid(), $inputMessage, date('Y-m-d H:i:s'));
             $manager->AddMessage($message);
 
@@ -50,16 +53,16 @@
             $this->SaveMessages($messages);
         }
 
-        public function UpdateMessage($message) {
-            $messages = $this->GetAllMessages();
-            $messageIndex = $this->GetIndexById($messages, $message->id);
+        // public function UpdateMessage($message) {
+        //     $messages = $this->GetAllMessages();
+        //     $messageIndex = $this->GetIndexById($messages, $message->id);
 
-            if ($messageIndex == -1)
-                return;
+        //     if ($messageIndex == -1)
+        //         return;
 
-            $messages[$messageIndex] = $message;
-            $this->SaveMessages($messages);
-        }
+        //     $messages[$messageIndex] = $message;
+        //     $this->SaveMessages($messages);
+        // }
 
         public function GetAllMessages() {
             $content = json_decode($this->storage->GetFileContent());
@@ -68,44 +71,45 @@
             return $messages;
         }
 
-        public function GetMessageById($id) {
-            $messages = $this->GetAllMessages();
-            $messageIndex = $this->GetIndexById($messages, $id);
+        // public function GetMessageById($id) {
+        //     $messages = $this->GetAllMessages();
+        //     $messageIndex = $this->GetIndexById($messages, $id);
 
-            if ($messageIndex >= 0)
-                return $messages[$messageIndex];
-        }
+        //     if ($messageIndex >= 0)
+        //         return $messages[$messageIndex];
+        // }
 
-        public function RemoveMessage($id) {
-            $messages = $this->GetAllMessages();
-            $messageIndex = $this->GetIndexById($messages, $id);
+        // public function RemoveMessage($id) {
+        //     $messages = $this->GetAllMessages();
+        //     $messageIndex = $this->GetIndexById($messages, $id);
 
-            if ($messageIndex == -1)
-                return;
+        //     if ($messageIndex == -1)
+        //         return;
 
-            array_splice($messages, $messageIndex, 1);
-            $this->SaveMessages($messages);
-        }
+        //     array_splice($messages, $messageIndex, 1);
+        //     $this->SaveMessages($messages);
+        // }
 
         private function SaveMessages($messages) {
             $content = json_encode($messages);
             $this->storage->SetFileContent($content);
         }
 
-        private function GetIndexById($messages, $id) {
-            if ($id != null) {
-                for($i = 0; $i < count($messages); $i++) {
-                    if ($messages[$i]->id == $id)
-                        return $i;
-                }
-            }
+        // private function GetIndexById($messages, $id) {
+        //     if ($id != null) {
+        //         for($i = 0; $i < count($messages); $i++) {
+        //             if ($messages[$i]->id == $id)
+        //                 return $i;
+        //         }
+        //     }
 
-            return -1;
-        }
+        //     return -1;
+        // }
     }
 
     class FileStorage {
         private $fileName;
+        private $writeLockFile = 'write.lock';
 
         public function __construct($fileName) {
             $this->fileName = $fileName;
@@ -113,13 +117,26 @@
 
         public function GetFileContent() {
             if (!file_exists($this->fileName) || filesize($this->fileName) == 0)
-                $this->SetFileContent('[]');
+                return "[]";
 
-            return file_get_contents($this->fileName);
+            $content = file_get_contents($this->fileName);
+
+            return $content;
         }
 
         public function SetFileContent($content) {
+            $lock = fopen($this->writeLockFile, 'w');
+
+            while (!flock($lock, LOCK_EX | LOCK_NB)) {
+                // Если блокировка уже установлена другим процессом, ждем некоторое время
+                // и затем пытаемся еще раз получить блокировку
+                usleep(10000); // Приостанавливаем выполнение на 10 миллисекунд
+            }
+            
             file_put_contents($this->fileName, $content);
+            
+            flock($lock, LOCK_UN); // Снятие блокировки
+            fclose($lock);
         }
     }
 

@@ -11,8 +11,8 @@
 <body>
 <div class="wrapper">
 
-    <div class="input-messages">
-        <div>
+    <div class="input-messages" id="input-messages">
+        <!-- <div>
             <div class="input-message">Привет, как дела?</div>
         </div>
         <div>
@@ -20,16 +20,16 @@
         </div>
         <div>
             <div class="input-message"> Тоже все идет по плану, учусь ти работаю!</div>
-        </div>
+        </div> -->
     </div>
 
     <div class="output-message-block">
-        <textarea class="output-message-area" placeholder="Введите сообщение..."></textarea>
+        <textarea class="output-message-area" placeholder="Введите сообщение..." onkeydown="onPressEnter()"></textarea>
     </div>
 </div>
 
 <div class="go-down">
-    <a class="go-down-href" href="#"></a>
+    <a class="go-down-href" href="#" onclick="bringScrollToBottom()"></a>
 </div>
 
 <script src="./js/script.js"></script>
