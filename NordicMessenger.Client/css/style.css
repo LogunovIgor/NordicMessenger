@@ -41,10 +41,16 @@ body {
     box-sizing: border-box;
     height: 92vh;
     overflow: auto;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
-.input-message {
+#input-messages::-webkit-scrollbar {
+    width: 0;
+  }
 
+.input-message {
+    text-align: justify;
     margin: 5px 0;
     background-color: rgb(255, 255, 255);
     padding: 10px;
@@ -52,6 +58,10 @@ body {
     display: inline-block;
     box-sizing: border-box;
     border-radius: 5px 5px 5px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    max-width: 100%;
+    word-break: break-all;
 }
 
 .output-message-block {
@@ -65,5 +75,13 @@ body {
     box-sizing: border-box;
     resize: none;
     overflow: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+@media (max-width: 500px) {
+    .go-down {
+        display: none;
+    }
 }
 
