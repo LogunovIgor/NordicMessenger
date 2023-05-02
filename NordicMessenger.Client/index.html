@@ -1,4 +1,12 @@
-   <title>Мессенджер</title>
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <title>Мессенджер</title>
 </head>
 <body>
 
@@ -33,6 +41,19 @@
 
                 </div>
         </div>
+    
+<div class="output-message-block">
+        <textarea class="output-message-area" placeholder="Введите сообщение..." onkeydown="onPressEnter()"></textarea>
+</div>
+
+
+<div class="go-down">
+    <a class="go-down-href" href="#" onclick="bringScrollToBottom()"></a>
+</div>
+
+<script src="./js/script.js"></script>
+</body>
+</html>
     
 <div class="output-message-block">
         <textarea class="output-message-area" placeholder="Введите сообщение..." onkeydown="onPressEnter()"></textarea>
