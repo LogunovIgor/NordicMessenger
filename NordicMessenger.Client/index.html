@@ -1,32 +1,43 @@
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
-    <title>Мессенджер</title>
+   <title>Мессенджер</title>
 </head>
 <body>
-<div class="wrapper">
 
-    <div id="input-messages">
-        <!-- <div>
-            <div class="input-message">Привет, как дела?</div>
+        <div class="selected-user">
+            <div class="name">Игорь</div>
         </div>
-        <div>
-            <div class="input-message">Привет, у меня все хорошо, как ты?</div>
-        </div>
-        <div>
-            <div class="input-message"> Тоже все идет по плану, учусь ти работаю!</div>
-        </div> -->
-    </div>
 
-    <div class="output-message-block">
+        <div id="input-messages">
+                
+                <div id class="chat-container">
+                    
+                        <li class="chat-left">
+                            <div class="chat-avatar">
+                                <img src= "./img/1.jpg">
+                                <div class="chat-name">Игорь</div>
+                            </div>
+                            <div class="chat-text">Привет Иван!
+                            <br>Как твои дела?</div>
+                            <div class="chat-hour">15:15 <span class="tuda"></span></div>
+                        </li>
+                        
+                        <li class="chat-right">
+                         <div class="chat-hour">15:16 <span class="tuda"></span></div>
+                            <div class="chat-text">Привет Игорь!
+                            <br> Все здорово, как сам?</div>
+                            <div class="chat-avatar">
+                                <img src="./img/2.jpg">
+                                <div class="chat-name">Иван</div>
+                            </div>
+                        </li>
+                    
+
+                </div>
+        </div>
+    
+<div class="output-message-block">
         <textarea class="output-message-area" placeholder="Введите сообщение..." onkeydown="onPressEnter()"></textarea>
-    </div>
 </div>
+
 
 <div class="go-down">
     <a class="go-down-href" href="#" onclick="bringScrollToBottom()"></a>
