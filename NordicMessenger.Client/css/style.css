@@ -23,7 +23,7 @@ body {
 
 .chat-container {
     position: relative;
-    padding: 1rem;
+    padding: 20px;
 }
 
 .chat-container li.chat-left,
@@ -56,13 +56,13 @@ body {
 }
 
 .chat-container li .chat-name {
-    font-size: .75rem;
+    font-size:15px;
     color: #999999;
     text-align: center;
 }
 
 .chat-container li .chat-text {
-    padding: .4rem 1rem;
+    padding: 5px 10px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -95,7 +95,7 @@ body {
 
 .chat-container li .chat-hour {
     padding: 0;
-    font-size: .75rem;
+    font-size: 12px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -154,29 +154,35 @@ body {
 
 .output-message-block {
     width: 100%;
-    height: 8%;
+    height: 100%;
 }
 
 .output-message-area {
     width: 100%; 
-    height: 100%;
+    height: 66px;
     box-sizing: border-box;
     resize: none;
     overflow: auto;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
 }
 
+.wrapper {
+    margin: 0px auto;
+    width: 100%;
+    height: 100vh;
+}
+    
 
+  
+  
     
 
 
 @media (max-width: 500px) {
     
 
-    .wrapper {
-        height: 85vh;
-    }
+  
     .chat-container li.chat-left,
     .chat-container li.chat-right {
         flex-direction: column;
@@ -213,15 +219,15 @@ body {
         padding-right: 5px;
     }
     .chat-container li .chat-text {
-        font-size: .8rem;
+        font-size:14px;
     }
     .go-down {
         width: 30px;
         height: 30px;
     }
     
+}   
     
-    
-}
+
 
 
